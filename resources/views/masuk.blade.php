@@ -2,5 +2,5 @@
 @section('title', 'About')
 
 @section('content')
-            Ini adalah halaman about!
+            Ini adalah halaman Masuk!
 @endsection
