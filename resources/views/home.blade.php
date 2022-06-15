@@ -1,5 +1,6 @@
 @extends('layouts.app')
+@section('title', 'Home')
 
 @section('content')
-    Ini adalah page welcome!
+    Ini adalah page Home!
 @endsection
