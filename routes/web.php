@@ -11,5 +11,7 @@ Route::get('/utama', [HomeController::class, 'home'])->name('home');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/surat-masuk', [MasukController::class, 'index'])->name('masuk.index');
+Route::get('/surat-masuk/create-new', [MasukController::class, 'create'])->name('masuk.create');
+Route::post('/surat-masuk/create-new', [MasukController::class, 'store']);
 
 

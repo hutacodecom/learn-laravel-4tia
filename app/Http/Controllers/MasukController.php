@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Masuk;
 use Illuminate\Http\Request;
 
 class MasukController extends Controller
@@ -13,7 +14,9 @@ class MasukController extends Controller
      */
     public function index()
     {
-        return view('masuk');
+        return view('surat-masuk.masuk', [
+            'masuks' => Masuk::all(),
+        ]); 
     }
 
     /**
@@ -23,7 +26,7 @@ class MasukController extends Controller
      */
     public function create()
     {
-        //
+        return view('surat-masuk.create');
     }
 
     /**
@@ -34,7 +37,18 @@ class MasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required'],
+            'number' => ['required'],
+            'description' => ['required'],
+        ]);
+        $masuk = new Masuk();
+        $masuk->user_id = 1;
+        $masuk->name = $validated['name'];
+        $masuk->number = $validated['number'];
+        $masuk->description = $validated['description'];
+        $masuk->save();
+        return redirect()->route('masuk.index');
     }
 
     /**
